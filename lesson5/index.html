@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset ="UTF-8">
+        <!-- <link rel="stylesheet"  href="style.css"> -->
+<title>lection</title> 
+
+</head>
+<body>
+    <h1 class= "hello">HeaderText</h1>
+    <script>
+        //function loop(i,j) - сигнатура функции
+        //как правило имя функции - глагол
+
+        // function confirmRemoving(){ 
+        //     return confirm("Are you shure?");
+        // }
+
+        // function removeNote(confirm){ 
+        //     var result = typeof confirm === "function" ? confirm() : confirm;
+        //     if(result){
+        //         console.log("Rrmoved");
+        //     }
+
+        // }
+        // removeNote(confirmRemoving);
+        // removeNote(false);
+        // removeNote(true);
+        
+        // function lengthByDefault(str, strLength){
+        //     if (strLength < str.length){
+        //         console.log("Number was changed, as it was less than length of string!");
+        //     }
+        //     return strLength > str.length ? strLength : strLength = str.length + 2;
+        // }
+
+        // function stringByDefault(str){
+        //     return str ? str : str = "String is empty!";
+        // }
+        
+        // function padString(string, length, flag = "right"){
+        //     string = stringByDefault(
+        //         prompt("Please, input some world")
+        //     );
+        //     length = lengthByDefault(
+        //         string,
+        //         prompt("Please, input some number")
+        //     );
+            
+
+        //     console.log("Inputted string: ", string);
+        //     console.log("Inputted number: ", length);
+        //     console.log("Flag: ", flag);
+
+        //     var symbols = "";
+        //     var counter = string.length; 
+
+
+        //     for(var i = 0; i < length; i++){
+        //         for(i; i >= counter; counter++){
+        //             symbols = symbols + "-";
+        //         }
+        //     }
+            
+        //     if( flag === "right"){
+        //         string += symbols;
+        //     } else if( flag === "left"){
+        //         string = symbols + string;
+        //     }
+        //     console.log("RESULT: ", string);
+        //     console.log("***********************");
+        //     return string; 
+        // }
+
+        
+
+        
+
+        // // padString();
+        // padString(
+        //     prompt("Input some word"), 
+        //     prompt("Input some number"),
+        //     "right"
+        // );
+        // padString(
+        //     prompt("Input some word"), 
+        //     prompt("Input some number"),
+        //     "left"
+        // );
+
+        // function stringByDefault(str){
+        //     return str ? str : str = "String is empty!";
+        // }
+        // function lengthByDefault(str, userLength){
+        //     if(userLength < str.length){
+        //         console.log("Number was changed, as it was less than length of string!");
+        //     }
+        //     return userLength > str.length ? userLength : userLength = str.length + 2 
+        // }
+
+
+        function padString(string, length, flag = "right"){
+            console.log("Inputted string: ", string);
+            console.log("Inputted number: ", length);
+            console.log("Flag: ", flag);
+            string ? string : string = "String is empty!";
+            if(length<string.length){
+                console.log("Number was changed, as it was less than length of string");
+            }
+            length > string.length ? length : length = string.length + 2 
+
+
+            var symbols = "";
+            var counter = string.length; 
+
+
+            for(var i = 0; i < length; i++){
+                for(i; i >= counter; counter++){
+                    symbols = symbols + "-";
+                }
+            }
+        
+            if( flag === "right"){
+                string += symbols;
+            } else if( flag === "left"){
+                string = symbols + string;
+            }
+            console.log("RESULT: ", string);
+            console.log("***********************");
+            return string; 
+
+        }
+
+        padString();
+        padString("test", 5, "left");
+        padString("hello, world!", 2);
+        padString(
+            prompt("Input some word"),
+            prompt("Input some number")
+        );
+    </script>
+</body>
+</html>

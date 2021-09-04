@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset ="UTF-8">
+        <!-- <link rel="stylesheet"  href="style.css"> -->
+<title>Lesson 9</title> 
+
+</head>
+<body>
+    <script src="index.js"></script>
+    <script>
+                            /*HOMEWORK*/
+const notification = [
+    {
+        app: "telegram",
+        message: 'hi!',
+        sender: 'Ivan Petrov',
+        date: '03.06.2021',
+    },
+    {
+        app: "telegram",
+        message: 'how are you?',
+        sender: 'Ivan Petrov',
+        date: '03.06.2021',
+    },
+    {
+        app: "instagram",
+        message: "nice photo!",
+        sender: "@anonymous1337",
+        date: "02.06.2021",
+    },
+    {
+        app: "instagram",
+        message: "check bio",
+        sender: "@summer_spammer",
+        date: "03.06.2021",
+    }
+];
+
+
+function groupBy(arr, prop){
+    return arr.reduce(function(result, element){ 
+        if(result[element[prop]]){
+
+            result[element[prop]] = result[element[prop]];
+
+        } else {
+
+            result[element[prop]] = [];
+        }
+
+        result[element[prop]].push(element);
+        return result;
+    }, {})
+}
+
+function toMatrix(arr, prop){
+    return arr.reduce(function(result, element, index, arr){
+        if(index && arr[index-1][prop] === element[prop]){
+
+            result
+                .find(function(group){
+                    return group[0][prop] == element[prop];
+                })
+                .push(element);
+
+        } else { 
+
+            result.push([element]);
+
+        }
+        return result;
+    }, [])
+}
+
+function groupNotifications(array, firstProp, seconProp){
+    var grouppedArr = groupBy(array, firstProp);
+    for(var key in grouppedArr){
+        grouppedArr[key] = toMatrix(grouppedArr[key], seconProp);
+    }
+    return grouppedArr;
+}
+console.log(groupNotifications(notification, "app", "sender"));
+                        /*END OF HOMEWORK*/
+
+
+
+
+
+
+
+
+
+
+
+//     var array = [1,2,3,4,5,6,7];
+
+// function myReverse(arr){
+//     var result = [];
+//     for(var i = arr.length-1; i >= 0; i--){
+//         result.push(arr[i]);
+//     }
+//     return result;
+    
+// }
+
+// console.log(myReverse(array));
+
+///////////////////////////////////////////////////////
+
+// var array = [1,2,"", false, true];
+
+// function myCompact(arr){
+//     array = array.filter(Boolean);
+//     return array; 
+// }  
+// console.log(myCompact(array));
+
+///////////////////////////////////////////////////////
+
+// var array = [1,2,1,3];
+
+
+// function myWithOut(arr){
+//     var result = [];
+//     var args = [];
+//     var counter = 0;
+//     for(var i = 1; i < arguments.length; i++){
+//         args[i] = arguments[i];
+//     }
+//     for(i = 0; i < arr.length; i++){
+//         if(args.indexOf(arr[i]) < 0){
+//             result.push(arr[i]);
+//         }
+//     }
+    
+//     return result;
+// }
+// console.log(myWithOut(array, 1));
+
+///////////////////////////////////////////////////////
+
+// var array = [1,2,1,2,3,4,5,3];
+
+// function myUnique(arr){              
+//     var result = [];
+//     return result = arr.filter(function(el, index, arr){
+//         console.log(arr.indexOf(el));
+//         return arr.indexOf(el) === index;
+//     })
+// }
+
+// console.log(myUnique(array));
+
+///////////////////////////////////////////////////////
+
+// var array1 = [{'x':1}, {'x':2}];
+// var array2 = [{'x':1}];
+
+// function myDifferenceBy(arr1, arr2, key){
+//     arr
+// }
+
+// console.log(myDifferenceBy(array1, array2, 'x'));
+</script>
+</body>
+</html>

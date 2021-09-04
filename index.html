@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hillel home work</title>
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+        }
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
+
+    <script src="three.js"></script>
+    <canvas id = 'canvas' width="600" height="400">
+    </canvas>
+
+    <!--HOMEWORK-->
+    <script>
+        
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d') //контекст рисования 2D/3D
+
+    /* SNOWMAN */
+    const drawCircle = (x, y, radius, color, isFilled = true) =>{
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2, true); //(start x, start y, raidius, startAngle, endAngle, clockwise)
+            ctx.strokeStyle = 'blue';
+            ctx.fillStyle = color;
+            isFilled ? ctx.fill() : ctx.stroke();  
+        }
+
+        // snowman body
+        const startX = 200;
+        let startY = 100; 
+        let radius = 20; 
+        const increaseRadius = 10;
+
+        let isFirst = true;
+        for(let amountOfCircles = 3; amountOfCircles > 0; amountOfCircles--){
+            drawCircle(startX, startY, radius, 'lightblue');
+            const amountOfButtons = 3; 
+            let buttonsPostionY = 10;
+            const buttonsRadius = 3;
+            if(isFirst){
+
+                //eyes
+                const distanceX = 2;
+                const paddingY = 5;
+                const eyeRadius = 2; 
+                drawCircle(startX - distanceX - eyeRadius, startY - paddingY, eyeRadius, 'black');
+                drawCircle(startX + distanceX + eyeRadius, startY - paddingY, eyeRadius, 'black');
+                isFirst = false; 
+
+                // carrot
+                ctx.strokeStyle = 'orange';
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                ctx.lineTo(startX + 15, startY);
+                ctx.lineTo(startX, startY + 10);
+                ctx.lineTo(startX, startY);
+                ctx.fillStyle = 'orange';
+                ctx.fill();
+                ctx.stroke();
+            } else {
+                // buttons
+                for(let counter = 0; counter < amountOfButtons; counter++){
+                    drawCircle(startX, startY - buttonsPostionY * counter, buttonsRadius, 'grey');
+                }
+            }
+            
+            let diameter = radius + radius;
+            startY += diameter;
+            radius += increaseRadius;
+        }
+
+
+        /*THREE.JS*/
+
+    const scene = new THREE.Scene();
+
+        const fov = 70; 
+        const aspectRatio = window.innerWidth / window.innerHeight;
+        const near = 0.1; 
+        const far = 1000; 
+        const camera = new THREE.PerspectiveCamera(fov, aspectRatio, near, far);
+        camera.position.z = 10;
+        const renderer = new THREE.WebGLRenderer({antialias: true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor('#ccc');
+        document.body.prepend(renderer.domElement);
+        
+        const geometry = new THREE.ConeGeometry(3,6,4);
+        const material = new THREE.MeshPhongMaterial({
+            color: 'orange'
+        });
+        const pyramid = new THREE.Mesh(geometry, material);
+
+        scene.add(pyramid);
+
+        const light = new THREE.DirectionalLight('yellow', 0.5);
+        light.position.set(1,0,1);
+        scene.add(light);
+
+        function animate(){
+            requestAnimationFrame(animate); 
+            renderer.render(scene, camera);
+
+            pyramid.rotation.y += 0.005;
+            pyramid.rotation.x += 0.001;
+        }
+
+        animate();
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        /*LECTION*/
+        // // ctx.fillStyle = 'red';
+        // // ctx.fillRect(20, 15, 50, 40); //1,2 argumnets - coordinates of start point
+        // //                              //3,4 arguments - width height of Rect
+        // // ctx.fillStyle = 'green';
+        // // ctx.fillRect(100, 100, 100, 100);
+        // // ctx.fillRect(150, 150, 150, 150);
+
+        // // ctx.strokeStyle = 'red';
+        // // ctx.lineWidth = 3;
+        // // ctx.strokeRect(250,300,50,50); //without background
+
+        // // ctx.strokeStyle = 'red';
+        // // // ctx.lineWidth = 10;
+        // // // ctx.beginPath();
+        // // // ctx.moveTo(300, 300);
+        // // // ctx.lineTo(350,350);
+        // // // ctx.moveTo(300,350);
+        // // // ctx.lineTo(350,300);
+        // // // ctx.stroke();
+
+        // const x = 100; 
+        // const y = 100;
+        // const roofHeight = 50;
+        // const roofWidth = 80;
+        // const houseWidth = 200;
+        // const houseHeight = 90;
+
+        // ctx.beginPath();
+        // ctx.moveTo(x, y);
+        // ctx.lineTo(x + roofWidth / 2, y - roofHeight);
+        // ctx.lineTo(x + roofWidth, y);
+        // ctx.lineTo(x + roofWidth, y + houseHeight);
+        // ctx.lineTo(x, y + houseHeight);
+        // ctx.lineTo(x, y);
+
+        // ctx.stroke();
+
+
+
+        /* THREE JS */
+    
+        // const scene = new THREE.Scene();
+
+        // const fov = 70; //угол обзора
+        // const aspectRatio = window.innerWidth / window.innerHeight;
+        // const near = 0.1; 
+        // const far = 1000; 
+        // const camera = new THREE.PerspectiveCamera(fov, aspectRatio, near, far);
+        // camera.position.z = 10;
+        // const renderer = new THREE.WebGLRenderer({antialias: true});
+        // renderer.setSize(window.innerWidth, window.innerHeight);
+        // renderer.setClearColor('#ccc');
+        // document.body.prepend(renderer.domElement);
+        
+        // const geometry = new THREE.BoxGeometry(1,1,1);
+        // const material = new THREE.MeshPhongMaterial({
+        //     color: '#6e6e6e'
+        // });
+        // const cube = new THREE.Mesh(geometry, material);
+        // console.log(cube);
+
+        // cube.scale.set(5,5,5)
+        // cube.rotation.y = 5;
+        
+        // scene.add(cube);
+
+        // const light = new THREE.DirectionalLight('yellow', 0.5);
+        // light.position.set(-10,5,14);
+        // scene.add(light);
+
+        // function animate(){
+        //     requestAnimationFrame(animate); 
+        //     renderer.render(scene, camera);
+
+        //     cube.rotation.y += 0.001;
+        //     cube.rotation.x += 0.001;
+        // }
+
+        // animate();
+    </script>        
+
+
+
+</body>
+</html>

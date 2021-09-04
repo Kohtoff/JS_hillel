@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset ="UTF-8">
+        <!-- <link rel="stylesheet"  href="style.css"> -->
+<title>TittleName</title> 
+
+</head>
+<body>
+    <script>
+        var product = {
+            id: "0123124",
+            name: "apple",
+            type: "fruit",
+            price: 22.12
+        };
+
+        function cloneObj(obj){
+            var newObj = {}; 
+            for(var key in obj){
+                newObj[key] = obj[key];
+            }
+            return newObj; 
+        }
+
+        function getValues(obj, separator = " | "){
+            var string = "";
+            for(var key in obj){
+                    string += obj[key]+separator;
+            }
+            return string;
+        }
+
+        function getKeys(obj, separator = "; "){
+            var string = ""; 
+            for(var key in obj){
+                if(obj.hasOwnProperty(key)){
+                    string += key + separator;
+                }
+            }
+            return string;
+        }
+        
+        function getEntries(obj){
+            var string = "";
+            for(var key in obj){
+                if(obj.hasOwnProperty(key)){
+                    string += key + " : " + obj[key] + "\n";
+                } 
+            }
+            return string;
+        }
+
+        
+            
+        
+
+        console.log("Original object: ", product);
+        console.log("Clone: ", cloneObj(product));
+        console.log("Values: ", getValues(product));
+        console.log("Keys: ", getKeys(product, " * "));
+        console.log("Keys and values:\n", getEntries(product));
+    </script>
+</body>
+</html>

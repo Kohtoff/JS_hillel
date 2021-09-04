@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset ="UTF-8">
+        <!-- <link rel="stylesheet"  href="style.css"> -->
+<title>homework</title> 
+
+</head>
+<body>
+    <script>
+        /*Избавился от глобальных переменных. Во время теста 
+        предыдущей версии выходные данные были корректны, 
+        поэтому не до конца понимаю, что пошло не так во время теста,
+        что проводился вами.
+        Для избежания повторения ситуации добавил явные аргументы в вызов функции.*/
+        function padString(string, length, symbol = "-", flag = true){
+            
+            string 
+                ? string
+                : string = "String is empty!";
+            if(length<=string.length){
+                console.log("Number was changed, as it was less than length of string");
+            }
+            length > string.length 
+                ? length 
+                : length = string.length + 2 
+                
+                var symbolsBuffer = "";
+                var counter = string.length; 
+                
+                
+                for(var i = 0; i < length; i++){
+                    for(i; i >= counter; counter++){
+                    symbolsBuffer = symbolsBuffer + symbol;
+                }
+            }
+            
+            if(flag){
+                string += symbolsBuffer;
+            } else if(!flag){
+                string = symbolsBuffer + string;
+            }
+            console.log("***********************");
+            return string; 
+
+        }
+
+       console.log(padString());
+       console.log(padString("test", 5, "=","left"));
+       console.log(padString("hello, world!", 2, "*"));
+       console.log(padString(
+            prompt("Input some word"),
+            prompt("Input some number"),
+            prompt("Input some symbol"),
+            confirm("What about flag?\n Ok - right, No - left")
+        ));
+        
+    </script>
+</body>
+</html>

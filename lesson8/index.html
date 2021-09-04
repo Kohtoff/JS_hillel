@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset ="UTF-8">
+        <!-- <link rel="stylesheet"  href="style.css"> -->
+<title>Lesson 8</title> 
+
+</head>
+<body>
+    <script>
+        /* HOMEWORK */
+// 1. Напишите функцию camelize(str), которая преобразует строки вида «my-short-string» в «myShortString».
+    var stringsInCebab = ['border-top-left-width',
+                          'font-size',
+                          'background-color'];
+    
+    function camelize(arr){
+        arr = arr.map(function(item, index, arr){
+            item = item.split('-')
+                .map(function(el, i , item){
+                    if( i > 0 ){
+                        el = el[0].toUpperCase() + el.slice(1);
+                    }
+                    return el; 
+                }).join('');
+                return item;
+        })
+        return arr;
+    }
+
+console.log(camelize(stringsInCebab));
+
+
+// 2. Напишите свою реализацию методов map и filter. Это должна быть ф-ия, которая принимает массив и колбэк, а в рузльтате отрабатывают как соотв. методы.
+
+var testArray = [1,2,3,4,5,6,7]
+
+function customMap(arr, callback){
+    var result = [];
+    for(var i = 0; i < arr.length; i++){
+        result[i] = callback(arr[i])
+    }
+    return result; 
+}
+
+console.log(customMap(testArray, function(item, index, testArray){
+                            if(item%2 == 0){
+                                return item+"!";
+                            }
+                            return item + "?"
+                        }));
+
+function customFilter(array, callback){
+    var result = [];
+    var j = 0; 
+    for(var i = 0; i < array.length; i++){
+        if(callback(array[i])){
+            result[j] = array[i];
+            j++;
+        }
+    }
+    return result;
+}
+
+console.log(customFilter(testArray, function(item, testArray){
+                                           return item%2 == 0;  
+                                        }));
+
+
+                    /* END OF HOMEWORK */
+
+//arr.pop() 
+// arr.forEach(function(item,i,arr){
+
+// });
+// arr.find(functio(student){
+    // return student.age === 33; 
+// })
+
+
+    // var arr = [1,2,3,4,5,6,7,8,9,10];
+    
+    // var even = []; 
+    // var odd = [];
+
+
+    // function findEven(){
+    //     var j = 0;
+    //    for(var i = 0; i < arr.length; i++){
+    //         if(arr[i]%2 === 0){
+                
+    //             even[j] = arr[i];
+    //             j++;
+    //         }
+    //     }
+    //     return even;
+    // }
+
+
+    // function findOdd(){
+    //     var j = 0;
+    //    for(var i = 0; i < arr.length; i++){
+    //         if(arr[i]%2 === 1){
+                
+    //             odd[j] = arr[i];
+    //             j++;
+    //         }
+    //     }
+    //     return odd;
+    // }
+
+    
+    // console.log(findEven());
+    // console.log(findOdd());
+
+
+    // var brr = [
+    //     ['firstName', 'Vasya'],
+    //     ['lastName', 'Ivanov'],
+    //     ['age', 25],
+    //     ['score', [25,50,75,100]],
+    //     ['city', 'Odesa']
+    // ]
+
+    // function makeObj(fields){
+    //     var newObj = {}; 
+        
+    //     for(var field of fields){
+    //         newObj[field[0]]= field[1];
+    //     }
+    //     return newObj;
+    // }
+ 
+    // console.log(makeObj(brr));
+
+
+    //watch about reduce() at home
+
+    </script>
+</body>
+</html>

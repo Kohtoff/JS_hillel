@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset ="UTF-8">
+        <!-- <link rel="stylesheet"  href="style.css"> -->
+<title>Lesson 3</title> 
+
+</head>
+<body>
+    <!-- <h1>Homework</h1>
+    <!-- h = 4 ---*---\n--***--\n-****-\n******* -->
+    <script>
+        // var userInput = prompt("Please, input some number: ");
+        // var tree = ""; 
+
+        // for(var height = 1; height <= userInput; height++){
+        //     for(var space = 0; space < userInput-height; space++){
+        //         tree += " ";
+        //     }
+        //     for(var star = 0; star < height*2-1; star++){
+        //         tree += "*";
+        //     }
+        //     tree += "\n";
+        // }
+        // alert(tree);
+        //  -->
+
+        function foo(){
+            const array = [0, 22, 33, 123];
+            return array.filter((item) => {
+                const result = item % 11;
+                if((result ^ 0) === result){
+                    return item;
+                }
+            })  
+        }
+
+        console.log(foo());
+    </script>
+</body>
+</html>

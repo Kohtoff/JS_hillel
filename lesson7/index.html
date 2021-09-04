@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset ="UTF-8">
+        <!-- <link rel="stylesheet"  href="style.css"> -->
+<title>TittleName</title> 
+
+</head>
+<body>
+    <h1 class= "hello">HeaderText</h1>
+
+    <script>
+                            /*HOMEWORK*/
+        function reverseString(string = ""){
+            console.log("*******************");
+            console.log("Original string: ", string);
+
+            
+            var result = "";
+            for(var i = string.length-1; i >= 0; i--){
+                result += string[i];
+            }
+            return result
+        }
+        function isCharPresent(string, char){
+            console.log("*******************");
+            console.log("We`re looking for \"" + char + "\" in word \"" + string + "\"");
+            
+            
+            var result = ""; 
+            for(var i = 0; i < string.length; i++){
+                if(string[i] === char){
+
+                    return result=true;
+                }
+            }
+            return result=false;
+        }
+        function charIndex(string, char){
+            console.log("*******************");
+            console.log("We`re looking for index of \"" + char + "\" in word \"" + string + "\"");
+
+            for(var i = 0; i < string.length; i++){
+                if(string[i] === char){
+                    return i;
+                }
+            }
+            return -1; 
+        }
+
+
+        console.log(reverseString("sort"));
+        console.log(isCharPresent("word", "l"));
+        console.log(isCharPresent("world", "l"));
+        console.log(charIndex("test", "s"));
+        console.log(charIndex("test", "r"));
+
+
+
+
+
+
+
+
+//         function doMath(){
+//             var result = 1;
+//             for(var i = 1; i < arguments.length; i++){
+//                 switch (arguments[0]) {
+//                     case '+':
+//                         result += arguments[i];
+//                         break;
+                
+//                     case '*':
+//                         result *= arguments[i];
+//                         break;
+
+//                     case '-':
+//                         if(i == 1){
+//                             continue;
+//                         }
+//                         arguments[1] -= arguments[i];
+//                         result = arguments[1];
+//                         break;
+                    
+//                     case '/':
+//                         if(i == 1){
+//                                 continue;
+//                         }
+//                         arguments[1] /= arguments[i];
+//                         result = arguments[1];
+//                         break;
+//                 }
+//             }
+//             return result;
+//         }
+
+// console.log(doMath('+',5,6));
+// console.log(doMath("-", 10, 1, 1));
+// console.log(doMath("*", 2,2,2,2));
+// console.log(doMath("/", 81, 3, 3));
+    </script>
+</body>
+</html>
